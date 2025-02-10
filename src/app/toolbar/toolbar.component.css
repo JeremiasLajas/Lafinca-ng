@@ -1,0 +1,17 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url('/assets/lafincalogo.png');
+    background-size: cover;
+    margin-left: 50px;
+}

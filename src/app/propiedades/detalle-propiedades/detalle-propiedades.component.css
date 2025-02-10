@@ -1,0 +1,4 @@
+img {
+    max-width: 100%; /* Se ajusta al contenedor */
+    height: auto; /* Mantiene la proporción */
+  }

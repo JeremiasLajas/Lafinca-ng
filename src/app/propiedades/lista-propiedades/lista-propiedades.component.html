@@ -1,0 +1,70 @@
+<section>
+    <h2>Propiedades Disponibles</h2>
+    <div class="boton-flotante" style="margin-top: 5px; margin-bottom: 8px;">
+        <button mat-fab color="primary" [routerLink]="'detalle-producto/0'">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-md-3" *ngFor="let propiedad of propiedades">
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image">
+                    </div>
+                    <mat-card-title style="margin-left: 6px;"><span class="text-primary">{{propiedad.codigo}} -</span>
+                        {{propiedad.titulo}}</mat-card-title>
+                    <mat-card-subtitle>
+                        <h2 class="icono-texto">
+                            <mat-icon aria-hidden="false"
+                                aria-label="Example home icon">attach_money</mat-icon>{{propiedad.precio}}
+                        </h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [src]="'http://localhost/api/propiedades/' + (propiedad.imagen || 'nodisponible.png')"
+
+                    alt="{{propiedad.titulo}}">
+                <mat-card-content class="">
+
+                    <div class="servicios">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">bolt</mat-icon> |
+
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">satellite</mat-icon> |
+
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">water_drop</mat-icon> |
+
+                        <mat-icon aria-hidden="false" aria- label="Example home icon">local_fire_department</mat-icon>
+                        <mat-icon aria-hidden="false" aria- label="Example home icon">garage</mat-icon>
+
+
+                    </div>
+                    <h6 class="servicios"><mat-icon aria-hidden="false" aria-label="Example home icon">place</mat-icon>
+                        |{{propiedad.direccion}}
+                    </h6>
+                    <h6>{{propiedad.descripcion}}</h6>
+                    <h6><span class="text-primary">Propietario: </span>{{propiedad.propietario}}</h6>
+
+                    <h6><span class="text-primary">Operacion: </span>{{propiedad.operacion}}</h6>
+                    <h6><span class="text-primary">Mt2: </span>{{propiedad.mt2}}</h6>
+                    <h6><span class="text-primary">Ambientes: </span>{{propiedad.ambientes}}</h6>
+
+                    <h3></h3>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <div class="botones-container">
+                        <button mat-raised-button color="primary" [routerLink]="['/detalle-propiedades', propiedad?.id]"
+                            *ngIf="propiedad?.id">
+                            <mat-icon>edit</mat-icon> EDITAR
+                        </button>
+
+
+
+                        <button mat-raised-button color="warn"
+                            (click)="eliminarPropiedad(propiedad.id, propiedad.titulo)"><mat-icon>delete</mat-icon>
+                            ELIMINAR</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</section>
