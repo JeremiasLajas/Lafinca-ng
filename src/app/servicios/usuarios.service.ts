@@ -6,7 +6,7 @@ import { Usuario } from '../clases/usuario';
 })
 export class UsuariosService {
   public estaLogueado: boolean = false;
-  private usuarioLogueado: Usuario = {usuario: '', nivel: 0};
+  private usuarioLogueado: Usuario = {usuario: '', nivel: 0, id : 0};
 
   constructor() { }
 

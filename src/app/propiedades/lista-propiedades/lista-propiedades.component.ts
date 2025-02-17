@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../../servicios/usuarios.service';
 @Component({
   selector: 'app-lista-propiedades',
   standalone: true,
@@ -27,8 +28,12 @@ export class ListaPropiedadesComponent implements OnInit {
   constructor(
     private propiedadesService: PropiedadesService,
     private router: Router,
+    private usuario: UsuariosService
   ) { }
   ngOnInit(): void {
+    if(this.usuario.estaLogueado){
+      this.usuario.getUsuarioLogueado
+    }
     this.propiedadesService.getPropiedades()
       .subscribe(
         (res: any) => { this.propiedades = res; },

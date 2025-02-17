@@ -46,6 +46,7 @@ export class PropiedadesService {
         err => { console.log('Ocurrió un error') }
       )
     } else {
+      console.log(datos)
       this.http.post(`${this.url}&accion=insertar&id=${id}`, datos)
       .subscribe(
         res => { console.log(res) },

@@ -13,16 +13,11 @@ export const routes: Routes = [
       {
         path: 'propiedades/:id',
         loadComponent: () => import('./propiedades/detalle-propiedades/detalle-propiedades.component')
-          .then(m => m.DetallePropiedadesComponent)
+          .then(m => m.DetallePropiedadesComponent), canActivate: [usuarioActivoGuard]
       },
       {
         path: 'login',
         loadComponent: () => import('./login/login.component')
           .then(m => m.LoginComponent)
-      },
-      {
-        path: 'navegacion',
-        loadComponent: () => import('./toolbar/toolbar.component')
-          .then(m => m.ToolbarComponent), canActivate: [usuarioActivoGuard]
       }
 ];

@@ -2,7 +2,7 @@
 <form #formulario="ngForm">
     <div class="row">
         <div class="col-md-4">
-            <img src="http://localhost/api/propiedades/{{propiedad.imagen||'nodisponible.png'}}"
+            <img src="http://localhost/api/propiedades/{{propiedad.imagen||'nodisponible.jpg'}}"
                 alt="{{propiedad.titulo}}">
             <input type="text" name="file" [(ngModel)]="propiedad.imagen">
             <input type="file" name="imagen" (change)="capturarImagen($event)">

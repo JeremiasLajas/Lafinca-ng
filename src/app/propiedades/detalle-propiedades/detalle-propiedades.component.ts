@@ -7,7 +7,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from "@angular/forms";
 import { SubirArchivosService } from '../../servicios/subir-archivos.service';
-
+import { UsuariosService } from '../../servicios/usuarios.service';
+import { Propiedad } from '../../interfaces/propiedad';
 @Component({
   selector: 'app-detalle-propiedades',
   standalone: true,
@@ -24,8 +25,9 @@ import { SubirArchivosService } from '../../servicios/subir-archivos.service';
 export class DetallePropiedadesComponent implements OnInit {
   id: any;
   items: any;
-  propiedad: any;
+  propiedad: any ;
   archivos: any = [];
+  usuarioActual: any;
   archivo = {
     nombre: null,
     nombreArchivo: null,
@@ -37,13 +39,16 @@ export class DetallePropiedadesComponent implements OnInit {
   }
 
   constructor(
+    private usuario: UsuariosService,
     private ruta: ActivatedRoute,
     private router: Router,
     private propiedadesService: PropiedadesService,
-    private subirArchivo: SubirArchivosService
+    private subirArchivo: SubirArchivosService,
   ) { }
 
   ngOnInit(): void {
+    this.usuarioActual =  JSON.parse(sessionStorage.getItem('usuarioActual') || '{}');
+    console.log(this.usuarioActual)
     this.id = this.ruta.snapshot.paramMap.get('id');
     if (this.id > 0) {
       this.obtenerPropiedad(this.id);
@@ -52,6 +57,7 @@ export class DetallePropiedadesComponent implements OnInit {
     }
 
   }
+
 
   obtenerPropiedad(id: any): void {
     this.propiedadesService.getPropiedad(id)
@@ -68,7 +74,9 @@ export class DetallePropiedadesComponent implements OnInit {
 
 
   guardarPropiedad(id: any): void {
+    this.propiedad.idUsuario = this.usuarioActual.id
     this.propiedadesService.guardarPropiedad(id, this.propiedad);
+    console.log(this.propiedad)
     alert('Propiedad guardada!');
     this.router.navigate(['/']); // this.router.navigateByUrl('/');
   }
