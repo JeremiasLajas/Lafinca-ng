@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService] 
+  providers: [LoginService]
 
 })
 export class LoginComponent implements OnInit {
@@ -29,18 +29,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  private u: Usuario = { usuario:'', nivel: 0, id: 0 };
+
   login(usuario: string, password: string, event: Event) {
     event.preventDefault(); // Prevenimos el evento por defecto
     this.loginService.login(usuario, password)
-    
+
       .subscribe(
         res => {
-          if (res.resultado == "OK"){
-             this.u ={ usuario:usuario, nivel: res.nivel, id: res.id };
-          }
-          
-          this.usuarioService.setUsuarioLogueado(this.u);
+
+          let u = this.loginService.getUsuario()
+          console.log(u)
+          this.usuarioService.setUsuarioLogueado(u);
           this.usuarioService.estaLogueado = true;
         },
         error => {
