@@ -1,0 +1,110 @@
+<h1> {{usuario?.nombreyapellido}} </h1>
+<form #formulario="ngForm">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appareance="legacy">
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="Código de la propiedad" [(ngModel)]="usuario.codigo" name="codigo" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appareance="legacy">
+                        <mat-label>Nombre y Apellido</mat-label>
+                        <input matInput placeholder="Nombre del Usuario" [(ngModel)]="usuario.nombreyapellido"
+                            name="nombreyapellido" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field appareance="legacy">
+                        <mat-label>DNI</mat-label>
+                        <input matInput placeholder="DNI del usuario" [(ngModel)]="usuario.dni" name="dni" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field appareance="legacy">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input type="date" matInput placeholder="Fecha de Nacimiento" [(ngModel)]="usuario.fechadenacimiento" name="fechadenacimiento" />
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appareance="legacy">
+                    <mat-label>Sexo</mat-label>
+                    <select matNativeControl required [(ngModel)]="usuario.sexo" name="sexo">
+                        <option value="masculino"> Masculino </option>
+                        <option value="Femenino"> Femenino </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appareance="outline">
+                    <mat-label>Direccion</mat-label>
+                    <input matInput placeholder="Direccion" [(ngModel)]="usuario.direccion" name="direccion" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field appareance="legacy">
+                    <mat-label>Localidad</mat-label>
+                    <input matInput placeholder="Localidad" [(ngModel)]="usuario.localidad" name="localidad" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appareance="legacy">
+                    <mat-label>Provincia</mat-label>
+                    <input matInput placeholder="Provincia" [(ngModel)]="usuario.provincia"
+                        name="provincia" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field appareance="legacy" style="width: 100%;">
+                    <mat-label>Password</mat-label>
+                    <input matInput [(ngModel)]="usuario.password" name="password"/>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field appareance="legacy" style="width: 100%;">
+                    <mat-label>Nombre de Usuario</mat-label>
+                    <input matInput [(ngModel)]="usuario.usuario" name="usuario"/>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field appareance="legacy">
+                    <mat-label>Nivel</mat-label>
+                    <select matNativeControl required [(ngModel)]="usuario.nivel" name="sexo">
+                        <option value="0"> Administrador </option>
+                        <option value="1"> Registro </option>
+                    </select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field appareance="legacy" style="width: 100%;">
+                    <mat-label>Observaciones</mat-label>
+                    <input matInput [(ngModel)]="usuario.observaciones" name="observaciones"/>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div>
+            <button mat-raised-button color="primary" (click)="guardarRegistro(usuario.id)" type="button">
+                <mat-icon>done</mat-icon>Guardar
+            </button>
+            @if( usuario.id > 0 ) {
+            <button mat-raised-button color="warn" (click)="eliminarRegistro(usuario.id)">
+                <mat-icon>delete</mat-icon>Eliminar
+            </button>
+            }
+        </div>
+    </div>
+</form>

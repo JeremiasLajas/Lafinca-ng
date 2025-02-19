@@ -45,20 +45,29 @@ import { CommonModule } from '@angular/common';
   providers: [UsuariosService] 
   
 })
+
 export class ToolbarComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
   logueado:boolean = false;
-
+  administrador: boolean = false;
+  usuarioActual: any 
+  nivel : any
   constructor(private usuarioService: UsuariosService, private router: Router) {}
-
+  
   ngOnInit(): void {
-    if (typeof window !== 'undefined' && sessionStorage.getItem('usuarioActual')) {
-      this.logueado = true;
+    this.usuarioActual = this.usuarioService.getUsuarioLogueado();
+    
+    if (typeof window !== 'undefined' && this.usuarioActual) {
+      this.logueado = true;      
+      this.nivel = this.usuarioActual[0].nivel;
+      console.log(this.nivel);
+
     } else {
       this.logueado = false;
     }
     console.log(this.logueado);
+    
 }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

@@ -14,10 +14,12 @@ import { MatInputModule } from '@angular/material/input';
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [LoginService]
+  providers: [LoginService] 
 
 })
 export class LoginComponent implements OnInit {
+
+  u: any;
 
   constructor(
     private loginService: LoginService,
@@ -33,13 +35,10 @@ export class LoginComponent implements OnInit {
   login(usuario: string, password: string, event: Event) {
     event.preventDefault(); // Prevenimos el evento por defecto
     this.loginService.login(usuario, password)
-
       .subscribe(
         res => {
-
-          let u = this.loginService.getUsuario()
-          console.log(u)
-          this.usuarioService.setUsuarioLogueado(u);
+          this.u = res;
+          this.usuarioService.setUsuarioLogueado(this.u);
           this.usuarioService.estaLogueado = true;
         },
         error => {

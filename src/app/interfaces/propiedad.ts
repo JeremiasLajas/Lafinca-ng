@@ -10,5 +10,6 @@ export interface Propiedad {
     direccion: String,
     descripcion: String,
     imagen: String,
-    idUsuario: number
+    idPropietario: number,
+    idInquilino: number
 }

@@ -22,7 +22,8 @@ export class PropiedadesService {
     direccion: "",
     descripcion: "",
     imagen: "",
-    idUsuario: 0
+    idPropietario: 0,
+    idInquilino: 0
   }
 
   private url='http://localhost/api/datos.php?tabla=propiedades';
@@ -46,7 +47,6 @@ export class PropiedadesService {
         err => { console.log('Ocurrió un error') }
       )
     } else {
-      console.log(datos)
       this.http.post(`${this.url}&accion=insertar&id=${id}`, datos)
       .subscribe(
         res => { console.log(res) },

@@ -3,6 +3,7 @@ import { ListaPropiedadesComponent } from './propiedades/lista-propiedades/lista
 import { DetallePropiedadesComponent } from './propiedades/detalle-propiedades/detalle-propiedades.component';
 import { LoginComponent } from './login/login.component';
 import { usuarioActivoGuard } from './guards/usuario.guard';
+import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 export const routes: Routes = [
     {
         path: '',
@@ -19,5 +20,14 @@ export const routes: Routes = [
         path: 'login',
         loadComponent: () => import('./login/login.component')
           .then(m => m.LoginComponent)
+      },
+      {
+        path: 'registro/:id',
+        loadComponent: () => import('./usuarios/registro-usuario/registro-usuario.component')
+          .then(m => m.RegistroUsuarioComponent)
+      },
+      {path: 'lista-usuarios',
+        loadComponent: () => import('./usuarios/lista-usuarios/lista-usuarios.component')
+          .then(m => m.ListaUsuariosComponent)
       }
 ];

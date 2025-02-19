@@ -6,21 +6,30 @@ import { Usuario } from '../clases/usuario';
 })
 export class UsuariosService {
   public estaLogueado: boolean = false;
-  private usuarioLogueado: Usuario = {usuario: '', nivel: 0, id : 0};
+  private usuarioLogueado: Usuario = {usuario: '', nivel: 0};
 
   constructor() { }
 
-
-
+  
+  
   setUsuarioLogueado(usuario: Usuario) {
     this.estaLogueado = true;
     this.usuarioLogueado = usuario;
     sessionStorage.setItem('usuarioActual', JSON.stringify(usuario));
+
   }
 
-  getUsuarioLogueado() {
-    return sessionStorage.getItem('usuarioActual');
-  }
+  
+    getUsuarioLogueado(): any {
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        const usuario = sessionStorage.getItem('usuarioActual');
+        return usuario ? JSON.parse(usuario) : null;
+      }
+      return null;
+    }
+    
+  //  return sessionStorage.getItem('usuarioActual');
+  
 
   logout() {
     this.estaLogueado = false;

@@ -37,22 +37,22 @@
 
 
                     </div>
-                    <h4 class="servicios"><mat-icon aria-hidden="false" aria-label="Example home icon">place</mat-icon>
+                    <h6 class="servicios"><mat-icon aria-hidden="false" aria-label="Example home icon">place</mat-icon>
                         |{{propiedad.direccion}}
-                    </h4>
-                    <h4>{{propiedad.descripcion}}</h4>
-                    <h4><span class="text-primary">Propietario: </span>{{propiedad.propietario}}</h4>
+                    </h6>
+                    <h6>{{propiedad.descripcion}}</h6>
+                    <h6><span class="text-primary">Propietario: </span>{{propiedad.propietario}}</h6>
 
-                    <h4><span class="text-primary">Operacion: </span>{{propiedad.operacion}}</h4>
-                    <h4><span class="text-primary">Mt2: </span>{{propiedad.mt2}}</h4>
-                    <h4><span class="text-primary">Ambientes: </span>{{propiedad.ambientes}}</h4>
+                    <h6><span class="text-primary">Operacion: </span>{{propiedad.operacion}}</h6>
+                    <h6><span class="text-primary">Mt2: </span>{{propiedad.mt2}}</h6>
+                    <h6><span class="text-primary">Ambientes: </span>{{propiedad.ambientes}}</h6>
 
                     <h3></h3>
                 </mat-card-content>
 
                 <mat-card-actions>
                     <div class="botones-container">
-                        <button mat-raised-button color="primary" [routerLink]="['/propiedades', propiedad?.id]"
+                        <button mat-raised-button color="primary" [routerLink]="['/propiedades/', propiedad?.id]"
                             *ngIf="propiedad?.id">
                             <mat-icon>edit</mat-icon> EDITAR
                         </button>
