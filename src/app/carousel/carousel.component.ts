@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./carousel.component.css'],
 })
 export class CarouselComponent {
-  images = [
+  imagenes = [
     'assets/1.png',
     'assets/2.png',
     'assets/3.png'

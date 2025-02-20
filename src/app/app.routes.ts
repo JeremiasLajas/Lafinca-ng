@@ -24,7 +24,7 @@ export const routes: Routes = [
       {
         path: 'registro/:id',
         loadComponent: () => import('./usuarios/registro-usuario/registro-usuario.component')
-          .then(m => m.RegistroUsuarioComponent)
+          .then(m => m.RegistroUsuarioComponent), canActivate: [usuarioActivoGuard]
       },
       {path: 'lista-usuarios',
         loadComponent: () => import('./usuarios/lista-usuarios/lista-usuarios.component')

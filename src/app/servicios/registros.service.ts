@@ -21,9 +21,11 @@ export class RegistroService {
     localidad: "",
     provincia: "",
     password: "",
-    usuario: "",
     observaciones: "",
-    nivel: 0
+    telefono: "",
+    usuario: "",
+    nivel: 0,
+    correo: ""
   }
 
   private url='http://localhost/api/datos.php?tabla=usuarios';
@@ -56,6 +58,10 @@ export class RegistroService {
   }
 
   eliminarRegistro(id: any) {
-    return this.http.delete(`${this.url}/usuarios/${id}`);
+    this.http.post(`${this.url}&accion=eliminar&id=${id}`, {})
+      .subscribe(
+        res => { console.log(res) },
+        err => { console.log('Ocurrió un error') }
+      )
   }
 }

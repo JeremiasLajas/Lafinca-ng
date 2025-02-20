@@ -26,7 +26,7 @@ export class ListaPropiedadesComponent implements OnInit {
   propiedades: any;
   propiedad: any;
   id: any;
-  displayedColumns: string[] = ['id', 'nombre', 'email', 'acciones'];
+
   constructor(
     private propiedadesService: PropiedadesService,
     private router: Router,
@@ -35,9 +35,9 @@ export class ListaPropiedadesComponent implements OnInit {
     this.propiedadesService.getPropiedades()
       .subscribe(
         (res: any) => { this.propiedades = res; },
+        
         (error) => { console.log(error); }
       );
- 
   }
 
   eliminarPropiedad(id: any, titulo: any): void {

@@ -8,19 +8,15 @@
        
         <!-- Espaciador -->
         <span class="spacer"></span>
-
-        <button mat-icon-button class="registro example-icon favorite-icon" aria-label="Acceso">
-            <a *ngIf="nivel == 0" mat-list-item [routerLink]="['registro/0']">
-                <mat-icon>person_add</mat-icon>                
-            </a>
-        </button>
-        <!-- Login/Logout -->
+        
         <button mat-icon-button class="login example-icon favorite-icon" aria-label="Acceso">
             <a mat-list-item *ngIf="!logueado" [routerLink]="['/login']">Login</a>
             <a mat-list-item *ngIf="logueado" (click)="logout()">Logout</a>
         </button>
 
-
+        <button mat-icon-button class=" usuarios example-icon favorite-icon" aria-label="Usuarios">
+            <a mat-list-item *ngIf="nivel===0" [routerLink]="['/lista-usuarios']">Usuarios</a>
+        </button>
 
 
     </mat-toolbar>

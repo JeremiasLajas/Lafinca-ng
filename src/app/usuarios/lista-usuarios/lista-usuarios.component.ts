@@ -39,10 +39,11 @@ export class ListaUsuariosComponent implements OnInit {
   eliminarRegistro(id: any, nombre: string): void {
     let respuesta = confirm(`¿Desea eliminar a ${nombre}?`);
     if (respuesta) {
-      this.registrosService.eliminarRegistro(id).subscribe(() => {
-        this.usuarios = this.usuarios.filter(usuario => usuario.id !== id);
-        alert('Usuario eliminado!');
-      });
+      if (respuesta) {
+        this.registrosService.eliminarRegistro(id);
+        alert('Cliente eliminado!');
+        this.router.navigate(['/lista-usuarios']);
+      };
     }
   }
 }

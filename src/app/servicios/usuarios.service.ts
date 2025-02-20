@@ -6,11 +6,17 @@ import { Usuario } from '../clases/usuario';
 })
 export class UsuariosService {
   public estaLogueado: boolean = false;
-  private usuarioLogueado: Usuario = {usuario: '', nivel: 0};
+  private usuarioLogueado: Usuario = {id: 0,
+    codigo: '',
+    nombreyapellido:  '',
+    dni:  '',
+    correo:  '',
+    usuario:  '',
+    nivel:  0};
 
   constructor() { }
 
-  
+  //Si utilizamos la variable usuarioLogueado solo en setUsuarioLogueado como aun no es existente en sessionStorage typscrip detecta como que no esta siendo leida en ningun lado. Por ello debemos utilizarla en getUsuario logueado para que no haya
   
   setUsuarioLogueado(usuario: Usuario) {
     this.estaLogueado = true;
@@ -20,15 +26,17 @@ export class UsuariosService {
   }
 
   
-    getUsuarioLogueado(): any {
-      if (typeof window !== 'undefined' && window.sessionStorage) {
-        const usuario = sessionStorage.getItem('usuarioActual');
-        return usuario ? JSON.parse(usuario) : null;
-      }
-      return null;
+  getUsuarioLogueado(): Usuario | null {
+    if (this.usuarioLogueado) { // Verifica si ya hay un usuario en memoria antes de acceder nuevamente al sessionStorage lo que lo optimiza
+      return this.usuarioLogueado;
     }
+    //Si no lo retorna de memoria si accede a sessionStorage para buscarlo 
+    const usuarioString = sessionStorage.getItem('usuarioActual');
+    return usuarioString ? JSON.parse(usuarioString) : null;
+
     
-  //  return sessionStorage.getItem('usuarioActual');
+  }
+
   
 
   logout() {

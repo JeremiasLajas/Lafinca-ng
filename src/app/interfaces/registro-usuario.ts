@@ -9,7 +9,10 @@ export interface RegistroUsuario {
     localidad: String,
     provincia: String,
     password: String,
-    usuario: String,
     observaciones: String,
-    nivel: number
+    telefono: String,
+    usuario: String,
+    nivel: number,
+    correo: String
+
 }
