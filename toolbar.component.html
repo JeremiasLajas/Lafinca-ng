@@ -1,0 +1,39 @@
+<nav>
+    <mat-toolbar color="primary">
+        <!-- Logo -->
+
+        <a [routerLink]="['/']">
+            <img src="/assets/lafincalogo.png" alt="Logo" class="logo-img">
+        </a>
+
+        <!-- Espaciador -->
+        <span class="spacer"></span>
+
+        <div class="contenedor-enlaces" style="padding-top: 20px;">
+            <a *ngIf="nivel == 0" mat-list-item [routerLink]="['lista-usuarios']">
+                <mat-icon>group_person</mat-icon>
+            </a>
+          </div> 
+          <div style="padding-top: 20px; padding-left: 10px;">
+            <a *ngIf="nivel == 0" mat-list-item [routerLink]="['lista-recibos']">
+                <mat-icon>receipt</mat-icon>
+            </a>
+          </div>   
+            
+
+      
+
+        <!-- Login/Logout -->
+
+        <a mat-list-item class="login" *ngIf="!logueado" [routerLink]="['/login']">
+            <mat-icon />login<mat-icon />
+
+        </a>
+        <a mat-list-item class="login" *ngIf="logueado" (click)="logout()">Logout</a>
+
+
+
+
+
+    </mat-toolbar>
+</nav>

@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>Lista de Usuarios</h2>
+  <div class="boton-flotante" style="margin-top: 5px; margin-bottom: 8px;">
+    <button mat-fab color="primary" [routerLink]="'registro/0'">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <table mat-table [dataSource]="usuarios" class="mat-elevation-z8">
+
+    <!-- Columna ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let usuario"> {{ usuario.id }} </td>
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let usuario"> {{ usuario.nombreyapellido }} </td>
+    </ng-container>
+
+    <!-- Columna Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let usuario"> {{ usuario.correo }} </td>
+    </ng-container>
+
+    <!-- Columna Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let usuario">
+        <button mat-icon-button color="primary" [routerLink]="['/registro', usuario.id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="eliminarRegistro(usuario.id, usuario.nombre)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Filas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>

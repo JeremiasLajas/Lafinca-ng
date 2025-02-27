@@ -1,0 +1,30 @@
+.example-header-image {
+    width: 60px;
+    height: 30px;
+    border-radius: 50%;
+    background-image: url('/assets/lafincalogo.png');
+    background-size: cover;
+}
+.botones-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px; /* Espaciado más grande */
+}
+.icono-texto {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el icono con el texto */
+    gap: 8px; /* Espacio entre el icono y el texto */
+  
+  }
+
+ .servicios {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaciado entre elementos */
+    font-size: 1.2rem;
+ }
+
+ .text-primary {
+    color: var(--mat-primary);
+  }
+  
